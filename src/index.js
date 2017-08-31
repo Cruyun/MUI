@@ -11,6 +11,7 @@ import Menuitem from "./components/menu/menuitem"
 import SubMenu from "./components/menu/submenu"
 import TableGroup from "./components/table/table"
 import Tablecol from "./components/table/table-col"
+import Modal from "./components/modal"
 
 const install = function (v) {
     v.component(Button.name, Button)
@@ -26,6 +27,7 @@ const install = function (v) {
     v.component(SubMenu.name, SubMenu)
     v.component(Tablecol.name, Tablecol)
     v.component(TableGroup.name, TableGroup)
+    v.component(Modal.name, Modal)
 }
 
 // auto install
@@ -47,4 +49,5 @@ module.exports = {
     Menuitem,
     SubMenu,
     TableGroup,
+    Modal,
 }
