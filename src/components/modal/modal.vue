@@ -3,10 +3,14 @@
         <div>
             <div class="mask">
                 <div class="m-modal">
-                    <slot name="title"></slot>
-                    <button class="m-cancel" v-on:click="cancelButton">
-                        <slot name="cancel"></slot>
-                    </button>
+                    <div class="headline">
+                        <div class="title">
+                            <slot name="title"></slot>
+                        </div>
+                        <div class="m-cancel">
+                            <slot name="cancel"></slot>
+                        </div>
+                    </div>
                     <div class="m-body">
                         <slot name="body"></slot>
                     </div>
@@ -14,30 +18,14 @@
                         <slot name="footer"></slot>
                     </div>
                 </div>
+                <span></span>
             </div>
         </div>
     </transition>
 </template>
 <script>
 export default {
-    name: "m-modal",
-    data() {
-        return {
-            cancelShow: true
-        }
-    },
-    props: {
-        visible: {
-            type: Boolean,
-            default: true
-        },
-    },
-    methods: {
-        cancelButton: function() {
-            this.cancelShow = false
-            console.log(this.cancelShow, "this.cancelShow")
-        }
-    },
+    name: "m-modal"
 }
 </script>
 <style lang="scss">
@@ -73,11 +61,19 @@ export default {
 }
 
 .slide-fade-enter,
-.slide-fade-leave-to
-/* .slide-fade-leave-active for below version 2.1.8 */
-
-{
+.slide-fade-leave-to {
     transform: translatex(-50px);
     opacity: 0;
+}
+
+.headline {
+    width: 100%;
+    overflow: hidden;
+}
+
+.m-cancel {
+    width: 60px;
+    height: 30px;
+    float: right;
 }
 </style>
