@@ -1,27 +1,29 @@
 <template>
-    <transition name="slide-fade">
-        <div>
-            <div class="mask">
-                <div class="m-modal">
-                    <div class="headline">
-                        <div class="title">
-                            <slot name="title"></slot>
-                        </div>
-                        <div class="m-cancel">
-                            <slot name="cancel"></slot>
-                        </div>
-                    </div>
-                    <div class="m-body">
-                        <slot name="body"></slot>
-                    </div>
-                    <div class="m-footer">
-                        <slot name="footer"></slot>
-                    </div>
+    <div class="mask">
+        <div class="m-modal">
+            <div class="headline">
+                <div class="title">
+                    <b>
+                        <slot name="title"></slot>
+                    </b>
                 </div>
-                <span></span>
+                <button class="delete">
+                    <slot name="delete"></slot>
+                </button>
+            </div>
+            <div class="body">
+                <slot name="body"></slot>
+            </div>
+            <div class="footer">
+                <button class="btn cancel">
+                    <slot name="cancel"></slot>
+                </button>
+                <button class="btn confirm">
+                    <slot name="confirm"></slot>
+                </button>
             </div>
         </div>
-    </transition>
+    </div>
 </template>
 <script>
 export default {
@@ -40,6 +42,7 @@ export default {
     transform: translate(-50%, -50%);
     border: 2px solid #dcdcdc;
     background-color: #ffffff;
+    padding: 20px;
 }
 
 .mask {
@@ -69,11 +72,63 @@ export default {
 .headline {
     width: 100%;
     overflow: hidden;
+    height: 20px;
 }
 
-.m-cancel {
-    width: 60px;
-    height: 30px;
+.title {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 20px;
+    vertical-align: top;
+}
+
+.delete {
+    width: 30px;
+    height: 20px;
     float: right;
+    background-color: transparent;
+    color: #dcdcdc;
+    font-size: 20px;
+}
+
+.delete:hover {
+    color: $primary-darker;
+}
+
+.body {
+    padding-top: 20px;
+    height: 120px;
+    font-size: 16px;
+}
+
+.footer {
+    float: right;
+}
+
+.btn {
+    width: 60px;
+    height: 36px;
+    border-radius: 4px;
+}
+
+.cancel {
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #dcdcdc;
+}
+
+.cancel:hover {
+    color: $primary-darker;
+    border: 1px solid $primary-darker;
+}
+
+.confirm {
+    background-color: $primary-darker;
+    color: #fff;
+    margin-left: 20px;
+}
+
+.confirm:hover {
+    background-color: $primary-middium;
 }
 </style>
